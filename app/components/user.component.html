@@ -1,0 +1,36 @@
+<h1>UserComponent</h1>
+<h2>Hello Name: {{name}}</h2>
+<ul>
+  <li>myObject.q: {{ myObject.q }}</li>
+  <li>myObject.a: {{ myObject.a }}</li>
+</ul>
+<hr>
+<h2>Todo List</h2>
+<button (click)="toggleMyArray()">{{ showMyArray ? "Hide MyArray" : "Show MyArray" }}</button>
+<div *ngIf="showMyArray">
+  <ul>
+    <li *ngFor="let item of myArray; let i=index">
+      {{ item }}<button (click)="deleteMyArray(i)">X</button>
+    </li>
+  </ul>
+</div>
+<form (submit)="addArray(item.value)">
+  <label>Add Array: </label>
+  <input type="text" #item>
+</form>
+<hr>
+<h2>Two Way Binding</h2>
+<form>
+  <label>Name: </label>
+  <input type="text" name="name" [(ngModel)]="name">
+  <label>myObject.q: </label>
+  <input type="text" name="myObject.q" [(ngModel)]="myObject.q">
+  <label>myObject.a: </label>
+  <input type="text" name="myObject.a" [(ngModel)]="myObject.a">
+</form>
+<hr>
+<h2>Http Request From https://jsonplaceholder.typicode.com/posts</h2>
+<div *ngFor="let post of posts">
+  <h3>{{ post.title}}</h3>
+  <p>{{ post.body }}</p>
+</div>
